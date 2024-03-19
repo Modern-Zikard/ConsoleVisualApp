@@ -53,18 +53,3 @@ void Point::setY(int Y)
 }
 
 
-int CoorTranf(int x, int y, int SizeX, int SizeY)
-{
-	int num;
-	if (x <= SizeX && y <= SizeY)
-		num = x + (y - 1) * SizeX;
-	else
-	{
-		return 0;
-
-		std::cout << "Error";
-
-	}
-
-	return num;
-}
