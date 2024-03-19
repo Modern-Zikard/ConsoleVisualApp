@@ -1,7 +1,5 @@
-﻿// ConsoleVisualApp.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//
-
-#include "Header.h"
+﻿
+#include "ClassPoint.h"
 
 const int MapSizeX = 60;
 const int MapSizeY = 30;
