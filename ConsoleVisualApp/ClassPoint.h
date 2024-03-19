@@ -18,6 +18,8 @@ private:
 public:
 	Point()
 	{
+		PointX = 0;
+		PointY = 0;
 	}
 	Point(int ax, int ay)
 	{
@@ -48,4 +50,21 @@ void Point::setX(int X)
 void Point::setY(int Y)
 {
 	PointY = Y;
+}
+
+
+int CoorTranf(int x, int y, int SizeX, int SizeY)
+{
+	int num;
+	if (x <= SizeX && y <= SizeY)
+		num = x + (y - 1) * SizeX;
+	else
+	{
+		return 0;
+
+		std::cout << "Error";
+
+	}
+
+	return num;
 }
