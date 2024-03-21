@@ -26,6 +26,7 @@ public:
 		End.setY(y2);
 
 	}
+
     int getStartX();
     int getStartY();
     void setStartX(int X);
@@ -67,6 +68,33 @@ public:
         C.setX(x3);
         C.setY(y3);
     }
+
+    int getPointAX();
+    int getPointAY();
+    void setPointAX(int X);
+    void setPointAY(int Y);
+
+    int getPointBX();
+    int getPointBY();
+    void setPointBX(int X);
+    void setPointBY(int Y);
+
+    int getPointCX();
+    int getPointCY();
+    void setPointCX(int X);
+    void setPointCY(int Y);
+
+    void AMoveX(char sign);
+    void AMoveY(char sign);
+
+    void BMoveX(char sign);
+    void BMoveY(char sign);
+
+    void CMoveX(char sign);
+    void CMoveY(char sign);
+
+   
+    
     void DrawTriangle(const char* m[], int mapsizeX, int mapsizeY);
 };
 
@@ -146,6 +174,27 @@ void Line::DrawLine(const char* m[], int mapsizeX, int mapsizeY, int ax1, int ay
     }
 }
 
+int Triangl::getPointAX() { return A.getX(); }
+int Triangl::getPointAY() { return A.getY(); }
+void Triangl::setPointAX(int X) { A.setX(X); }
+void Triangl::setPointAY(int Y) { A.setY(Y); }
+
+int Triangl::getPointBX() { return B.getX(); }
+int Triangl::getPointBY() { return B.getY(); }
+void Triangl::setPointBX(int X) { B.setX(X); }
+void Triangl::setPointBY(int Y) { B.setY(Y); }
+
+int Triangl::getPointCX() { return C.getX(); }
+int Triangl::getPointCY() { return C.getY(); }
+void Triangl::setPointCX(int X) { C.setX(X); }
+void Triangl::setPointCY(int Y) { C.setY(Y); }
+
+void Triangl::AMoveX(char sign) { A.PointMoveX(sign); }
+void Triangl::AMoveY(char sign) { A.PointMoveY(sign); }
+void Triangl::BMoveX(char sign) { B.PointMoveX(sign); }
+void Triangl::BMoveY(char sign) { B.PointMoveY(sign); }
+void Triangl::CMoveX(char sign) { C.PointMoveX(sign); }
+void Triangl::CMoveY(char sign) { C.PointMoveY(sign); }
 
 void Triangl::DrawTriangle(const char* m[], int mapsizeX, int mapsizeY)
 {

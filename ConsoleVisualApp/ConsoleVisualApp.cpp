@@ -18,43 +18,68 @@ int main()
 {
     Line line(1, 1, 1, 1);
 
-    while (line.getEndX() <= MapSizeX || line.getEndY() <= MapSizeY)
+    while (line.getEndY() <= MapSizeY)
     {
         system("cls");
 
         FillMap(Map, MapSizeX, MapSizeY);
         line.DrawLine(Map, MapSizeX, MapSizeY);
         DrawMap();
-        line.EndMoveX('+');
+     
         line.EndMoveY('+');
 
     }
 
-    while (line.getEndY() >= 1)
+    while (line.getEndX() <= MapSizeX/2)
     {
         system("cls");
 
         FillMap(Map, MapSizeX, MapSizeY);
         line.DrawLine(Map, MapSizeX, MapSizeY);
         DrawMap();
-        line.EndMoveY('-');
-        
+
+        line.EndMoveX('+');
 
     }
 
-    
-    /*while(point.getX() <= MapSizeX)
+    while (line.getStartX() <= line.getEndX())
     {
         system("cls");
-        
-        
+
         FillMap(Map, MapSizeX, MapSizeY);
-        point.DrawPoint(Map, MapSizeX, MapSizeY);
+        line.DrawLine(Map, MapSizeX, MapSizeY);
         DrawMap();
-        point.PointMoveX();
-        
-    }*/
-    
+
+        line.StartMoveX('+');
+
+    }
+
+    while (line.getEndX() <= MapSizeX / 2)
+    {
+        system("cls");
+
+        FillMap(Map, MapSizeX, MapSizeY);
+        line.DrawLine(Map, MapSizeX, MapSizeY);
+        DrawMap();
+
+        line.EndMoveX('+');
+
+    }
+
+    while (line.getEndX() >= 1 || line.getStartX() <= MapSizeX)
+    {
+        system("cls");
+
+        FillMap(Map, MapSizeX, MapSizeY);
+        line.DrawLine(Map, MapSizeX, MapSizeY);
+        DrawMap();
+
+        line.EndMoveX('-');
+        line.EndMoveY('-');
+        line.StartMoveX('+');
+        line.StartMoveY('+');
+
+    }
 
 }
 

@@ -37,6 +37,12 @@ public:
 	void DrawPoint(const char* m[], int mapsizeX, int mapsizeY);
 };
 
+int Point::getX() { return PointX; }
+int Point::getY() { return PointY; }
+
+void Point::setX(int X) { PointX = X; }
+void Point::setY(int Y) { PointY = Y; }
+
 void Point::DrawPoint(const char* m[], int mapsizeX, int mapsizeY)
 {
 	m[CoorTranf(PointX, PointY, mapsizeX, mapsizeY)] = "0";
@@ -57,25 +63,6 @@ void Point::PointMoveY(char sign)
 	case '-':PointY--; break;
 	case '+':PointY++; break;
 	}
-}
-
-int Point::getX()
-{
-	return PointX;
-}
-int Point::getY()
-{
-	return PointY;
-}
-
-void Point::setX(int X)
-{
-	PointX = X;
-
-}
-void Point::setY(int Y)
-{
-	PointY = Y;
 }
 
 
