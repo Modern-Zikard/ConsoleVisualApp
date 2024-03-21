@@ -2,10 +2,11 @@
 
 
 #include <iostream>
+#include <windows.h>
 #include <conio.h>
 #include <cmath>
 
-
+int CoorTranf(int x, int y, int SizeX, int SizeY);
 
 class Point
 {
@@ -31,7 +32,32 @@ public:
 	int getY();
 	void setX(int X);
 	void setY(int Y);
+	void PointMoveX(char sign);
+	void PointMoveY(char sign);
+	void DrawPoint(const char* m[], int mapsizeX, int mapsizeY);
 };
+
+void Point::DrawPoint(const char* m[], int mapsizeX, int mapsizeY)
+{
+	m[CoorTranf(PointX, PointY, mapsizeX, mapsizeY)] = "0";
+}
+
+void Point::PointMoveX(char sign)
+{
+	switch(sign)
+	{
+	case '-':PointX--; break;
+	case '+':PointX++; break;
+	}
+}
+void Point::PointMoveY(char sign)
+{
+	switch (sign)
+	{
+	case '-':PointY--; break;
+	case '+':PointY++; break;
+	}
+}
 
 int Point::getX()
 {
@@ -53,3 +79,18 @@ void Point::setY(int Y)
 }
 
 
+int CoorTranf(int x, int y, int SizeX, int SizeY)
+{
+	int num;
+	if (x <= SizeX && y <= SizeY)
+		num = x + (y - 1) * SizeX;
+	else
+	{
+		return 0;
+
+		std::cout << "Error";
+
+	}
+
+	return num;
+}

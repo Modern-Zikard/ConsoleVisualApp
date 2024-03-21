@@ -11,26 +11,50 @@ void DrawMap();
 
 const char* Map[MapSizeY*MapSizeX];
 
+void FillMap(const char* m[], int mapsizeX, int mapsizeY);
 
 
 int main()
 {
-   
-    Triangl triangl1(18, 10, 26, 1, 10, 1);
-    Triangl triangl2(18, 10, 34, 10, 34, 18);
-    Triangl triangl3(18, 10, 1, 10, 1, 18);
+    Line line(1, 1, 1, 1);
 
-    for (int i = 1; i <= MapSizeY * MapSizeX; i++)
+    while (line.getEndX() <= MapSizeX || line.getEndY() <= MapSizeY)
     {
-        Map[i] = " ";
+        system("cls");
+
+        FillMap(Map, MapSizeX, MapSizeY);
+        line.DrawLine(Map, MapSizeX, MapSizeY);
+        DrawMap();
+        line.EndMoveX('+');
+        line.EndMoveY('+');
+
     }
-   triangl1.DrawTriangle(Map, MapSizeX, MapSizeY);
-   triangl2.DrawTriangle(Map, MapSizeX, MapSizeY);
-   triangl3.DrawTriangle(Map, MapSizeX, MapSizeY);
-   
+
+    while (line.getEndY() >= 1)
+    {
+        system("cls");
+
+        FillMap(Map, MapSizeX, MapSizeY);
+        line.DrawLine(Map, MapSizeX, MapSizeY);
+        DrawMap();
+        line.EndMoveY('-');
+        
+
+    }
+
     
+    /*while(point.getX() <= MapSizeX)
+    {
+        system("cls");
+        
+        
+        FillMap(Map, MapSizeX, MapSizeY);
+        point.DrawPoint(Map, MapSizeX, MapSizeY);
+        DrawMap();
+        point.PointMoveX();
+        
+    }*/
     
-    DrawMap();
 
 }
 
@@ -54,6 +78,13 @@ void DrawMap()
 
 
 
+void FillMap(const char* m[], int mapsizeX, int mapsizeY)
+{
+    for (int i = 1; i <= mapsizeY * mapsizeX; i++)
+    {
+        m[i] = " ";
+    }
 
+}
 
 

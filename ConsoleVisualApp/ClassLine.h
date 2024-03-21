@@ -26,10 +26,25 @@ public:
 		End.setY(y2);
 
 	}
+    int getStartX();
+    int getStartY();
+    void setStartX(int X);
+    void setStartY(int Y);
+
+    int getEndX();
+    int getEndY();
+    void setEndX(int X);
+    void setEndY(int Y);
+
+    void StartMoveX(char sign);
+    void StartMoveY(char sign);
+
+    void EndMoveX(char sign);
+    void EndMoveY(char sign);
 
 	void DrawLine(const char* m[], int mapsizeX, int mapsizeY);
 	void DrawLine(const char* m[], int mapsizeX, int mapsizeY, int ax1, int ay1, int ax2, int ay2);
-    int CoorTranf(int x, int y, int SizeX, int SizeY);
+   
     
 
 };
@@ -51,17 +66,29 @@ public:
         B.setY(y2);
         C.setX(x3);
         C.setY(y3);
-
     }
     void DrawTriangle(const char* m[], int mapsizeX, int mapsizeY);
-
-
 };
 
 
+int Line::getStartX() { return Start.getX(); }
+int Line::getStartY() { return Start.getY(); }
+void Line::setStartX(int X) { Start.setX(X); }
+void Line::setStartY(int Y) { Start.setY(Y); }
+
+int Line::getEndX() { return End.getX(); }
+int Line::getEndY() { return End.getY(); }
+void Line::setEndX(int X) { End.setX(X); }
+void Line::setEndY(int Y) { End.setY(Y); }
+
+void Line::StartMoveX(char sign) { Start.PointMoveX(sign); }
+void Line::StartMoveY(char sign) { Start.PointMoveY(sign); }
+
+void Line::EndMoveX(char sign) { End.PointMoveX(sign); }
+void Line::EndMoveY(char sign) { End.PointMoveY(sign); }
+
 void Line::DrawLine(const char* m[], int mapsizeX, int mapsizeY)
 {
-
     int x1 = Start.getX();
     int y1 = Start.getY();
     int x2 = End.getX();
@@ -72,10 +99,10 @@ void Line::DrawLine(const char* m[], int mapsizeX, int mapsizeY)
     const int signX = x1 < x2 ? 1 : -1;
     const int signY = y1 < y2 ? 1 : -1;
     int err = dx - dy;
-    m[CoorTranf(x2, y2, mapsizeX, mapsizeY)] = "*";
+    m[CoorTranf(x2, y2, mapsizeX, mapsizeY)] = "0";
     while (x1 != x2 || y1 != y2)
     {
-        m[CoorTranf(x1, y1, mapsizeX, mapsizeY)] = "*";
+        m[CoorTranf(x1, y1, mapsizeX, mapsizeY)] = "0";
         int err2 = err * 2;
         if (err2 > -dy)
         {
@@ -88,11 +115,9 @@ void Line::DrawLine(const char* m[], int mapsizeX, int mapsizeY)
             y1 += signY;
         }
     }
-
 }
 void Line::DrawLine(const char* m[], int mapsizeX, int mapsizeY, int ax1, int ay1, int ax2, int ay2)
 {
-
     int x1 = ax1;
     int y1 = ay1;
     int x2 = ax2;
@@ -103,10 +128,10 @@ void Line::DrawLine(const char* m[], int mapsizeX, int mapsizeY, int ax1, int ay
     const int signX = x1 < x2 ? 1 : -1;
     const int signY = y1 < y2 ? 1 : -1;
     int err = dx - dy;
-    m[CoorTranf(x2, y2, mapsizeX, mapsizeY)] = "*";
+    m[CoorTranf(x2, y2, mapsizeX, mapsizeY)] = "0";
     while (x1 != x2 || y1 != y2)
     {
-        m[CoorTranf(x1, y1, mapsizeX, mapsizeY)] = "*";
+        m[CoorTranf(x1, y1, mapsizeX, mapsizeY)] = "0";
         int err2 = err * 2;
         if (err2 > -dy)
         {
@@ -119,23 +144,8 @@ void Line::DrawLine(const char* m[], int mapsizeX, int mapsizeY, int ax1, int ay
             y1 += signY;
         }
     }
-
 }
-int Line::CoorTranf(int x, int y, int SizeX, int SizeY)
-{
-    int num;
-    if (x <= SizeX && y <= SizeY)
-        num = x + (y - 1) * SizeX;
-    else
-    {
-        return 0;
 
-        std::cout << "Error";
-
-    }
-
-    return num;
-}
 
 void Triangl::DrawTriangle(const char* m[], int mapsizeX, int mapsizeY)
 {
@@ -146,12 +156,9 @@ void Triangl::DrawTriangle(const char* m[], int mapsizeX, int mapsizeY)
     int x3 = C.getX();
     int y3 = C.getY();
 
-
     DrawLine(m, mapsizeX, mapsizeY, x1, y1, x2, y2);
     DrawLine(m, mapsizeX, mapsizeY, x2, y2, x3, y3);
     DrawLine(m, mapsizeX, mapsizeY, x3, y3, x1, y1);
-
-
 
 }
 
