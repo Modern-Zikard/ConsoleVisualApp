@@ -1,5 +1,6 @@
-﻿#pragma once
+﻿
 #include "ClassLine.h"
+#include "ClassCircle.h"
 
 const int MapSizeX = 34;
 const int MapSizeY = 18;
@@ -18,14 +19,57 @@ int main()
 {
     Line line(1, 1, 1, 1);
 
-    while (line.getEndY() <= MapSizeY)
+    Circle circle(17, 9, 1);
+
+    
+    FillMap(Map, MapSizeX, MapSizeY);
+    circle.DrawCircle(Map, MapSizeX, MapSizeY);
+    DrawMap();
+
+    
+
+}
+
+void DrawMap()
+{
+    std::cout << "____________________________________________________________"<< std::endl;
+    for (int i = 1; i <= MapSizeY* MapSizeX; i++)
+    {
+        if (i  % MapSizeX == 1)
+            std::cout << "|";
+
+        std::cout << Map[i];
+
+        if(i  % MapSizeX == 0 && i > 0)
+            std::cout << "|" << std::endl;
+       
+    }
+    std::cout << "____________________________________________________________" << std::endl;
+
+}
+
+
+
+void FillMap(const char* m[], int mapsizeX, int mapsizeY)
+{
+    for (int i = 1; i <= mapsizeY * mapsizeX; i++)
+    {
+        m[i] = " ";
+    }
+
+}
+
+
+
+
+/*while (line.getEndY() <= MapSizeY)
     {
         system("cls");
 
         FillMap(Map, MapSizeX, MapSizeY);
         line.DrawLine(Map, MapSizeX, MapSizeY);
         DrawMap();
-     
+
         line.EndMoveY('+');
 
     }
@@ -79,37 +123,4 @@ int main()
         line.StartMoveX('+');
         line.StartMoveY('+');
 
-    }
-
-}
-
-void DrawMap()
-{
-    std::cout << "____________________________________________________________"<< std::endl;
-    for (int i = 1; i <= MapSizeY* MapSizeX; i++)
-    {
-        if (i  % MapSizeX == 1)
-            std::cout << "|";
-
-        std::cout << Map[i];
-
-        if(i  % MapSizeX == 0 && i > 0)
-            std::cout << "|" << std::endl;
-       
-    }
-    std::cout << "____________________________________________________________" << std::endl;
-
-}
-
-
-
-void FillMap(const char* m[], int mapsizeX, int mapsizeY)
-{
-    for (int i = 1; i <= mapsizeY * mapsizeX; i++)
-    {
-        m[i] = " ";
-    }
-
-}
-
-
+    }*/
